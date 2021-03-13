@@ -1,4 +1,5 @@
 ﻿using Photoshop.Core.Models;
+using PhotoShop.Core.Contracts;
 using PhotoShop.DataAccess.InMemory;
 using System;
 using System.Collections.Generic;
@@ -10,11 +11,11 @@ namespace PhotoShop.WebUI.Controllers
 {
     public class ProductCategoryManagerController : Controller
     {
-        ProductCategoryRepository context;
+        IRepository<ProductCategory> context;
 
-        public ProductCategoryManagerController()
+        public ProductCategoryManagerController(IRepository<ProductCategory> context)
         {
-            context = new ProductCategoryRepository();
+           this.context = context;
         }
         // GET: ProductManager
         public ActionResult Index()
